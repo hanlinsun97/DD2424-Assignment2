@@ -130,10 +130,10 @@ label_no_onehot_valid=label_no_onehot_5[9000:10000]
 data_length_real = 49000
 data_length_valid = 1000
 
-lr_max = 0.05
+lr_max = 0.03
 lr_min = 0.01
 
-lam_max = 0.05
+lam_max = 0.007
 lam_min = 0.001
 
 
@@ -142,6 +142,8 @@ lam_min = 0.001
 value = []
 
 for i in range(50): #START STOP STEP
+    learning_rate = np.random.uniform(lr_min, lr_max)
+    lam = np.random.uniform(lam_min, lam_max)
 
     [W1, W2, b1, b2] = initialization(m)
     lr = learning_rate # Store the origin learning rate before weight decay.
