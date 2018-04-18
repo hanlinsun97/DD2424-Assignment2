@@ -94,11 +94,11 @@ def Compute_momentum(grad_W1, grad_W2, grad_b1, grad_b2, v_b1, v_b2, v_W1, v_W2)
 
 #Parameter
 batch_size = 100
-lam = 0.004
+lam = 0.003
 rho = 0.9
-m = 50 #number of hidden nodes
-MAX = 20
-learning_rate = 0.028
+m = 400 #number of hidden nodes
+MAX = 30
+learning_rate = 0.025
 decay_rate = 0.9
 training_data = 49000
 
@@ -133,7 +133,7 @@ data_length_valid = 1000
 lr_max = 0.03
 lr_min = 0.01
 
-lam_max = 0.007
+lam_max = 0.0015
 lam_min = 0.001
 
 
@@ -141,9 +141,9 @@ lam_min = 0.001
 
 value = []
 
-for i in range(50): #START STOP STEP
-    learning_rate = np.random.uniform(lr_min, lr_max)
-    lam = np.random.uniform(lam_min, lam_max)
+for i in range(1): #START STOP STEP
+#    learning_rate = np.random.uniform(lr_min, lr_max)
+#    lam = np.random.uniform(lam_min, lam_max)
 
     [W1, W2, b1, b2] = initialization(m)
     lr = learning_rate # Store the origin learning rate before weight decay.
@@ -191,7 +191,7 @@ for i in range(50): #START STOP STEP
         J_store_1.append(J)
         acc_1.append(acc)
         loss_store_1.append(loss)
-    #    print("Accuracy on training data:", acc)
+        print("Accuracy on training data:", acc)
         # We run our model on validation set
 
         s1 = Compute_S(W1,b1,data_valid)
@@ -203,7 +203,7 @@ for i in range(50): #START STOP STEP
         J_store_2.append(J)
         acc_2.append(acc)
         loss_store_2.append(loss)
-    #    print("Accuracy on validation set:",acc)
+        print("Accuracy on validation set:",acc)
 
     s1 = Compute_S(W1,b1,data_test)
     h = Compute_h(s1)
